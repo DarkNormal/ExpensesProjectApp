@@ -1,0 +1,125 @@
+﻿
+@{
+
+    ViewBag.Title = "Expenses";
+}
+
+<div id="exTab2" class="container">
+    <ul class="nav nav-tabs">
+        <li class="active">
+            <a href="#numbaone" data-toggle="tab">Reimbursement</a>
+        </li>
+        <li>
+            <a href="#numbatwo" data-toggle="tab">Mileage</a>
+        </li>
+        <li>
+            <a href="#numbathree" data-toggle="tab">Per Diem</a>
+        </li>
+        <li>
+            <a href="#numbafour" data-toggle="tab">Credit Card Requests</a>
+        </li>
+    </ul>
+
+    <div class="tab-content clearfix">
+        <div class="tab-pane active" id="numbaone">
+            @Html.Action("PendingReimbursementClaimsPartial", "Manager")
+        </div>
+        <div class="tab-pane" id="numbatwo">
+            @Html.Action("PendingMileageClaimsPartial", "Manager")
+        </div>
+        <div class="tab-pane" id="numbathree">
+            @Html.Action("PendingPerDiemClaimsPartial", "Manager")
+        </div>
+        <div class="tab-pane" id="numbafour">
+            @Html.Action("PendingCreditCardClaimsPartial", "Manager")
+        </div>
+    </div>
+</div>
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+<script>
+    $(function () {
+        $("a[id*=approve--]").each(function () {
+            var $this = $(this);
+            if ($this.attr('id').indexOf('approve--') > -1) {
+                var id = $this.attr("id");
+
+                var uniqueID = id.substring(9);
+                $("#" + id).click(function (e) {
+                    $.ajax({
+                        url: '../Expenses/UpdateSingleStatus',
+                        type: 'POST',
+                        contentType: 'application/json',
+                        data: JSON.stringify({
+                            selectedExpenseID: uniqueID,
+                            status: 0
+                        }),
+                        success: function (response) {
+                            if (response != null && response.success && response.status == 0) {
+                                var alert = document.getElementById("message");
+                                alert.style.visibility = "visible";
+                                $("#statusStrong").html("approved");
+                                setTimeout(function () {
+                                    $(alert).fadeTo('fast', 0, function () {
+                                        alert.style.visibility = "hidden";
+                                        alert.style.opacity = 100;
+                                    });
+                                }, 2000);
+
+                                $("#PartialViewContainer").load('@Url.Action("PendingClaimsPartial","Manager")')
+                            }
+
+
+                        },
+                        error: function () {
+                            //alert("error in approve");
+                        }
+                    });
+                });
+            }
+        });
+        $("a[id*=reject--]").each(function () {
+            var $this = $(this);
+            if ($this.attr('id').indexOf('reject--') > -1) {
+                var id = $this.attr("id");
+
+                var uniqueID = id.substring(8);
+                $("#" + id).click(function (e) {
+                    $.ajax({
+                        url: '../Expenses/UpdateSingleStatus',
+                        type: 'POST',
+                        contentType: 'application/json',
+                        data: JSON.stringify({
+                            selectedExpenseID: uniqueID,
+                            status: 1
+                        }),
+                        success: function (response) {
+                            if (response != null && response.success && response.status == 1) {
+                                var alert = document.getElementById("message");
+                                alert.style.visibility = "visible";
+                                $("#statusStrong").html("rejected");
+                                setTimeout(function () {
+                                    $(alert).fadeTo('fast', 0, function () {
+                                        alert.style.visibility = "hidden";
+                                        alert.style.opacity = 100;
+                                    });
+                                }, 2000);
+
+                                $("#PartialViewContainer").load('@Url.Action("PendingClaimsPartial","Manager")')
+                            }
+
+
+                        },
+                        error: function () {
+                            //alert("error in reject");
+                        }
+                    });
+                });
+            }
+        });
+    });
+</script>

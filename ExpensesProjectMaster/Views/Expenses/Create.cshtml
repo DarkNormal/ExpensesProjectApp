@@ -1,0 +1,42 @@
+﻿@model ExpensesProjectMaster.Models.Entities.Expense
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<div id="exTab2" class="container">
+    <ul class="nav nav-tabs">
+        <li class="active">
+            <a href="#1" data-toggle="tab">Reimbursement</a>
+        </li>
+        <li>
+            <a href="#2" data-toggle="tab">Mileage</a>
+        </li>
+        <li>
+            <a href="#3" data-toggle="tab">Per Diem</a>
+        </li>
+        <li>
+            <a href="#4" data-toggle="tab">Credit Card Request</a>
+        </li>
+    </ul>
+
+    <div class="tab-content clearfix">
+        <div class="tab-pane active" id="1">
+            @Html.Action("CreateReimbursement", "Expenses")
+        </div>
+        <div class="tab-pane" id="2">
+            @Html.Action("Create", "Mileage")
+        </div>
+        <div class="tab-pane" id="3">
+            @Html.Action("Create", "PerDiem")
+        </div>
+        <div class="tab-pane" id="4">
+            @Html.Action("CreateCreditCardRequest", "Expenses")
+        </div>
+    </div>
+</div>
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

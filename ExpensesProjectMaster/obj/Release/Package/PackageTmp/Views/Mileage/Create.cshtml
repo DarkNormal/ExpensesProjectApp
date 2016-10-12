@@ -1,0 +1,107 @@
+﻿@model ExpensesProjectMaster.Models.Entities.Mileage
+
+@{
+    ViewBag.Title = "Create";
+}
+@{
+    Layout = null;
+}
+
+
+@using (Html.BeginForm("CreateMileage", "Expenses"))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        @*<div id="date-field" class="form-group">
+            @Html.LabelFor(model => model.DateOfExpense, "Date of Travel", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.DateOfExpense, new { htmlAttributes = new { @class = "form-control datepicker" } })
+                @Html.ValidationMessageFor(model => model.DateOfExpense, "", new { @class = "text-danger" })
+            </div>
+        </div>*@
+        <div id="project-field" class="form-group">
+            @Html.LabelFor(model => model.ProjectNo, "Project", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("ProjectNo", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.ProjectNo, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div id="rate-container">
+            <div id="currency-field" class="form-group">
+                @Html.LabelFor(model => model.Currency, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EnumDropDownListFor(model => model.Currency, "Select Currency", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.Currency, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+
+        <div id="distance-field" class="form-group">
+            @Html.LabelFor(model => model.Distance, "Distance (km)", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Distance, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.ActualAmount, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div id="from-location-field" class="form-group">
+            @Html.LabelFor(model => model.FromLocation, "From", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.FromLocation, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.ActualAmount, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div id="to-location-field" class="form-group">
+            @Html.LabelFor(model => model.ToLocation, "To", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ToLocation, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.ActualAmount, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div id="comment-field" class="form-group">
+            @Html.LabelFor(model => model.Comment, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Comment, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Comment, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        @*<div id="employee-field" class="form-group">
+            @html.labelfor(model => model.employeeid, "employeeid", htmlattributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @html.dropdownlist("employeeid", null, htmlattributes: new { @class = "form-control" })
+                @html.validationmessagefor(model => model.employeeid, "", new { @class = "text-danger" })
+            </div>
+        </div>*@
+
+        
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Rechargeable, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <div class="checkbox">
+                    @Html.EditorFor(model => model.Rechargeable)
+                    @Html.ValidationMessageFor(model => model.Rechargeable, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+        </div>
+
+        <div id="submit-btn" class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Submit Mileage Expense Claim" class="btn btn-info" />
+            </div>
+        </div>
+    </div>
+}
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

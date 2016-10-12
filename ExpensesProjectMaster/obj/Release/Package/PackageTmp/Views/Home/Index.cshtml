@@ -1,0 +1,38 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<div style="height:75vh">
+    <div class="row center-vertical">
+        <div class="col-xs-6 col-md-3 col-md-offset-3">
+            <div class="panel panel-blue panel-widget ">
+                <div class="row no-padding">
+                    <div class="col-sm-3 col-lg-5 widget-left">
+                        <a href="@Url.Action("Create", "Expenses")">
+                            <svg class="glyph stroked plus sign"><use xlink:href="#stroked-plus-sign" /></svg>
+                        </a>
+                    </div>
+                    <div class="col-sm-9 col-lg-7 widget-right">
+                        <div class="large">Submit a Claim</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-6 col-md-3">
+            <div class="panel panel-red panel-widget ">
+                <div class="row no-padding">
+                    <div class="col-sm-3 col-lg-5 widget-left">
+                        <a href="@Url.Action("Create", "Expenses")">
+                            <svg class="glyph stroked plus sign"><use xlink:href="#stroked-plus-sign" /></svg>
+                        </a>
+                    </div>
+                    <div class="col-sm-9 col-lg-7 widget-right">
+                        <div class="large"> CC Request</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>

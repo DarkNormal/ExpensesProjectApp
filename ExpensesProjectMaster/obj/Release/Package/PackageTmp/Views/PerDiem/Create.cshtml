@@ -1,0 +1,140 @@
+﻿@model ExpensesProjectMaster.Models.Entities.PerDiem
+
+@{
+    ViewBag.Title = "Create";
+}
+@{
+    Layout = null;
+}
+
+<script type="text/javascript">
+    $(function () { // will trigger when the document is ready
+        $.validator.methods.date = function (value, element) {
+            if ($.browser.webkit) {
+                var d = new Date();
+                return this.optional(element) || !/Invalid|NaN/.test(new Date(d.toLocaleDateString(value)));
+            }
+            else {
+                return this.optional(element) || !/Invalid|NaN/.test(new Date(value));
+            }
+        };
+        //$('.datepicker').datepicker({ dateFormat: 'dd/mm/yy', minDate: '-3M' });
+        $(function () {
+            var dateFormat = "dd/mm/yy",
+              from = $("#from")
+                .datepicker({
+                    minDate: '-3M'
+                })
+                .on("change", function () {
+                    to.datepicker("option", "minDate", getDate(this));
+                }),
+              to = $("#to").datepicker({
+                  minDate: '-3M'
+              })
+              .on("change", function () {
+                  from.datepicker("option", "maxDate", getDate(this));
+              });
+
+            function getDate(element) {
+                var date;
+                try {
+                    date = $.datepicker.parseDate(dateFormat, element.value);
+                } catch (error) {
+                    date = null;
+                }
+
+                return date;
+            }
+        });
+    });
+</script>
+
+@using (Html.BeginForm("CreatePerDiem", "Expenses"))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div id="project-field" class="form-group">
+            @Html.LabelFor(model => model.ProjectNo, "Project", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("ProjectNo", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.ProjectNo, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div id="from-date-field" class="form-group">
+            @Html.LabelFor(model => model.FromDate, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.FromDate,  new { @class = "form-control datepicker", id="from", placeholder = "Enter Start Date here..." })
+                @Html.ValidationMessageFor(model => model.FromDate, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div id="to-date-field" class="form-group">
+            @Html.LabelFor(model => model.ToDate, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.ToDate, new { @class = "form-control datepicker", id = "to", placeholder = "Enter End Date here..." })
+                @Html.ValidationMessageFor(model => model.ToDate, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div id="from-location-field" class="form-group">
+            @Html.LabelFor(model => model.Location, "Location", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Location, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.ActualAmount, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div id="rate-container">
+            <div id="currency-field" class="form-group">
+                @Html.LabelFor(model => model.Currency, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EnumDropDownListFor(model => model.Currency, "Select Currency", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.Currency, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+
+        <div id="comment-field" class="form-group">
+            @Html.LabelFor(model => model.Comment, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Comment, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Comment, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        @*<div id="employee-field" class="form-group">
+                @Html.LabelFor(model => model.EmployeeID, "EmployeeID", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownList("EmployeeID", null, htmlAttributes: new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.EmployeeID, "", new { @class = "text-danger" })
+                </div>
+            </div>*@
+
+
+
+        <div id="rechargeable-field" class="form-group">
+            @Html.LabelFor(model => model.Rechargeable, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <div class="checkbox">
+                    @Html.EditorFor(model => model.Rechargeable)
+                    @Html.ValidationMessageFor(model => model.Rechargeable, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+
+        <div id="submit-btn" class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Submit Expense Claim" class="btn btn-info" />
+            </div>
+        </div>
+    </div>
+}
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

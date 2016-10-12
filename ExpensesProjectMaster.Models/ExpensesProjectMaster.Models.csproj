@@ -1,0 +1,270 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{69F32555-7413-444E-A31C-6E86CE6354DF}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ExpensesProjectMaster.Models</RootNamespace>
+    <AssemblyName>ExpensesProjectMaster.Models</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.1\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.1\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Owin, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Owin.2.2.1\lib\net45\Microsoft.AspNet.Identity.Owin.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.2.1.0\lib\net45\Microsoft.Owin.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.2.1.0\lib\net45\Microsoft.Owin.Security.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Cookies, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.Cookies.2.1.0\lib\net45\Microsoft.Owin.Security.Cookies.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.OAuth, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.OAuth.2.1.0\lib\net45\Microsoft.Owin.Security.OAuth.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.4.5.11\lib\net40\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5, processorArchitecture=MSIL">
+      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.3\lib\net45\System.Web.Razor.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Entities\AccountViewModels.cs" />
+    <Compile Include="Entities\Category.cs" />
+    <Compile Include="Entities\Country.cs" />
+    <Compile Include="Entities\CreditCardRequest.cs" />
+    <Compile Include="Entities\Currency.cs" />
+    <Compile Include="Entities\Customer.cs" />
+    <Compile Include="Entities\Employee.cs" />
+    <Compile Include="Entities\Expense.cs" />
+    <Compile Include="Entities\IdentityModels.cs" />
+    <Compile Include="Entities\ManageViewModels.cs" />
+    <Compile Include="Entities\Mileage.cs" />
+    <Compile Include="Entities\PerDiem.cs" />
+    <Compile Include="Entities\Practice.cs" />
+    <Compile Include="Entities\Project.cs" />
+    <Compile Include="Entities\Receipt.cs" />
+    <Compile Include="Entities\Reimbursement.cs" />
+    <Compile Include="Entities\Status.cs" />
+    <Compile Include="Entities\Team.cs" />
+    <Compile Include="Entities\V1Entity.cs" />
+    <Compile Include="Migrations\201610040817504_initial.cs" />
+    <Compile Include="Migrations\201610040817504_initial.Designer.cs">
+      <DependentUpon>201610040817504_initial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201610041356580_intToStringTeamName.cs" />
+    <Compile Include="Migrations\201610041356580_intToStringTeamName.Designer.cs">
+      <DependentUpon>201610041356580_intToStringTeamName.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201610041422000_seedMethod.cs" />
+    <Compile Include="Migrations\201610041422000_seedMethod.Designer.cs">
+      <DependentUpon>201610041422000_seedMethod.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201610041521296_emailUser.cs" />
+    <Compile Include="Migrations\201610041521296_emailUser.Designer.cs">
+      <DependentUpon>201610041521296_emailUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201610051248308_approvalStatus.cs" />
+    <Compile Include="Migrations\201610051248308_approvalStatus.Designer.cs">
+      <DependentUpon>201610051248308_approvalStatus.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201610061432399_mileage_inheritance.cs" />
+    <Compile Include="Migrations\201610061432399_mileage_inheritance.Designer.cs">
+      <DependentUpon>201610061432399_mileage_inheritance.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201610061436473_perdiem_inheritance.cs" />
+    <Compile Include="Migrations\201610061436473_perdiem_inheritance.Designer.cs">
+      <DependentUpon>201610061436473_perdiem_inheritance.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201610071114000_creditcard.cs" />
+    <Compile Include="Migrations\201610071114000_creditcard.Designer.cs">
+      <DependentUpon>201610071114000_creditcard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201610071129555_pendingExpense.cs" />
+    <Compile Include="Migrations\201610071129555_pendingExpense.Designer.cs">
+      <DependentUpon>201610071129555_pendingExpense.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201610091632167_requiredComment.cs" />
+    <Compile Include="Migrations\201610091632167_requiredComment.Designer.cs">
+      <DependentUpon>201610091632167_requiredComment.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201610101342587_comment.cs" />
+    <Compile Include="Migrations\201610101342587_comment.Designer.cs">
+      <DependentUpon>201610101342587_comment.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201610101539256_dates.cs" />
+    <Compile Include="Migrations\201610101539256_dates.Designer.cs">
+      <DependentUpon>201610101539256_dates.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201610101954478_name.cs" />
+    <Compile Include="Migrations\201610101954478_name.Designer.cs">
+      <DependentUpon>201610101954478_name.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201610102002504_nameData.cs" />
+    <Compile Include="Migrations\201610102002504_nameData.Designer.cs">
+      <DependentUpon>201610102002504_nameData.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201610102010165_nameDataRevert.cs" />
+    <Compile Include="Migrations\201610102010165_nameDataRevert.Designer.cs">
+      <DependentUpon>201610102010165_nameDataRevert.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201610102016239_negativeVals.cs" />
+    <Compile Include="Migrations\201610102016239_negativeVals.Designer.cs">
+      <DependentUpon>201610102016239_negativeVals.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ClassDiagram1.cd" />
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201610040817504_initial.resx">
+      <DependentUpon>201610040817504_initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201610041356580_intToStringTeamName.resx">
+      <DependentUpon>201610041356580_intToStringTeamName.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201610041422000_seedMethod.resx">
+      <DependentUpon>201610041422000_seedMethod.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201610041521296_emailUser.resx">
+      <DependentUpon>201610041521296_emailUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201610051248308_approvalStatus.resx">
+      <DependentUpon>201610051248308_approvalStatus.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201610061432399_mileage_inheritance.resx">
+      <DependentUpon>201610061432399_mileage_inheritance.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201610061436473_perdiem_inheritance.resx">
+      <DependentUpon>201610061436473_perdiem_inheritance.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201610071114000_creditcard.resx">
+      <DependentUpon>201610071114000_creditcard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201610071129555_pendingExpense.resx">
+      <DependentUpon>201610071129555_pendingExpense.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201610091632167_requiredComment.resx">
+      <DependentUpon>201610091632167_requiredComment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201610101342587_comment.resx">
+      <DependentUpon>201610101342587_comment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201610101539256_dates.resx">
+      <DependentUpon>201610101539256_dates.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201610101954478_name.resx">
+      <DependentUpon>201610101954478_name.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201610102002504_nameData.resx">
+      <DependentUpon>201610102002504_nameData.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201610102010165_nameDataRevert.resx">
+      <DependentUpon>201610102010165_nameDataRevert.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201610102016239_negativeVals.resx">
+      <DependentUpon>201610102016239_negativeVals.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,81 @@
+﻿body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+.emphasis {
+    font-weight: bold;
+}
+.navbar-header{
+    background-color:#00632f;
+}
+
+.tab-content{
+    background-color: #fff;
+}
+
+#exTab1 .tab-content {
+  padding : 5px 15px;
+}
+
+#exTab2 h3 {
+  padding : 5px 15px;
+}
+
+/* remove border radius for the tab */
+
+#exTab1 .nav-pills > li > a {
+  border-radius: 0;
+}
+
+/* change border radius for the tab , apply corners on top*/
+
+#exTab3 .nav-pills > li > a {
+  border-radius: 4px 4px 0 0 ;
+}
+
+#exTab3 .tab-content {
+  padding : 5px 15px;
+}
+
+#message {
+    visibility:hidden;
+    position:absolute;
+    left:70%;
+    top:-5%;
+    width: 20%;
+    z-index:100;
+
+}
+#inner-message {
+    margin: 0 auto;
+}
+#PartialViewContainer{
+    padding-top:10px;
+}
+.center-vertical{
+    
+    position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+}

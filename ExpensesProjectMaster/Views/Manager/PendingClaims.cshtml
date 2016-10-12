@@ -1,0 +1,118 @@
+﻿
+@{
+    ViewBag.Title = "Pending Claims";
+}
+
+
+<script>
+    //Set code to run when the link is clicked
+    // by assigning a function to "onclick"
+    $(function () {
+        $("#reject-all").click(function (e) {
+            e.preventDefault();
+            var checkedExpenses = new Array();
+            $("input:checkbox").each(function () {
+                var $this = $(this);
+
+                if ($this.is(":checked")) {
+                    checkedExpenses.push($this.attr("id"));
+                }
+            });
+            $.ajax({
+                url: '../Expenses/UpdateStatus',
+                type: 'POST',
+                contentType: 'application/json',
+                data: JSON.stringify({
+                    selectedExpenses: checkedExpenses,
+                    status: 1
+                }),
+                success: function (response) {
+                    if (response != null && response.success && response.status == 1) {
+                        var alert = document.getElementById("message");
+                        alert.style.visibility = "visible";
+                        $("#statusStrong").html("rejected");
+                        setTimeout(function () {
+                            $(alert).fadeTo('fast', 0, function () {
+                                alert.style.visibility = "hidden";
+                                alert.style.opacity = 100;
+                            });
+                        }, 2000);
+                        
+                        $("#PartialViewContainer").load('@Url.Action("PendingClaimsPartial","Manager")')
+                    }
+
+
+                },
+                error: function () {
+                    alert("error");
+                }
+            });
+            return false;
+        });
+        $("#approve-all").click(function (e) {
+            e.preventDefault();
+            var checkedExpenses = new Array();
+            $("input:checkbox").each(function () {
+                var $this = $(this);
+
+                if ($this.is(":checked")) {
+                    checkedExpenses.push($this.attr("id"));
+                }
+            });
+            $.ajax({
+                url: '../Expenses/UpdateStatus',
+                type: 'POST',
+                contentType: 'application/json',
+                data: JSON.stringify({
+                    selectedExpenses: checkedExpenses,
+                    status: 0
+                }),
+                success: function (response) {
+                    if (response != null && response.success && response.status == 0) {
+                        var alert = document.getElementById("message");
+                        alert.style.visibility = "visible";
+                        $("#statusStrong").html("approved");
+                        setTimeout(function () {
+                            $(alert).fadeTo('fast', 0, function () {
+                                alert.style.visibility = "hidden";
+                                alert.style.opacity = 100;
+                            });
+                        }, 2000);
+                        
+                        $("#PartialViewContainer").load('@Url.Action("PendingClaimsPartial","Manager")')
+                    }
+
+
+
+                },
+                error: function () {
+                }
+            });
+            return false;
+        });
+    });
+
+</script>
+<div id="message">
+    <div style="padding: 5px;">
+        <div class="alert alert-success alert-dismissible" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            All selected expenses were marked as <strong id="statusStrong"></strong>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-8 col-md-offset-2 text-center">
+        <h1>@ViewBag.Title</h1>
+        <a type="button" id="approve-all" class="btn btn-success" role="button">Approve all selected claims</a>
+        <a type="button" id="reject-all" class="btn btn-danger" role="button">Reject all selected claims</a>
+    </div>
+</div>
+
+
+<div id="PartialViewContainer">
+    @Html.Partial("PendingClaimsPartial")
+</div>
+
+
+

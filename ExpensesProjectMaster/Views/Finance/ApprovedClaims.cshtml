@@ -1,0 +1,51 @@
+﻿@{
+    ViewBag.Title = "Approved Claims";
+}
+<h1>@ViewBag.Title</h1>
+
+
+@{
+
+    ViewBag.Title = "Expenses";
+}
+
+<div id="exTab2" class="container">
+    <ul class="nav nav-tabs">
+        <li class="active">
+            <a href="#1" data-toggle="tab">Reimbursement</a>
+        </li>
+        <li>
+            <a href="#2" data-toggle="tab">Mileage</a>
+        </li>
+        <li>
+            <a href="#3" data-toggle="tab">Per Diem</a>
+        </li>
+        <li>
+            <a href="#4" data-toggle="tab">Credit Card Requests</a>
+        </li>
+    </ul>
+
+    <div class="tab-content clearfix">
+        <div class="tab-pane active" id="1">
+            @Html.Action("ReimbursementList", "Finance")
+        </div>
+        <div class="tab-pane" id="2">
+            @Html.Action("MileageList", "Finance")
+        </div>
+        <div class="tab-pane" id="3">
+            @Html.Action("PerDiemList", "Finance")
+        </div>
+        <div class="tab-pane" id="4">
+            @Html.Action("CreditCardList", "Finance")
+        </div>
+    </div>
+</div>
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+
+
+
